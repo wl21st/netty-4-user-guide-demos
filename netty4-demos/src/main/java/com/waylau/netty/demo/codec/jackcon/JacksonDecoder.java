@@ -14,26 +14,27 @@ import io.netty.handler.codec.ByteToMessageDecoder;
  */
 public class JacksonDecoder<T> extends ByteToMessageDecoder {
 
-    private final Class<T> clazz;
-	/**
-	 * 
-	 */
-    public JacksonDecoder(Class<T> clazz) {
-        this.clazz = clazz;
-	}
+  private final Class<T> clazz;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see io.netty.handler.codec.ByteToMessageDecoder#decode(io.netty.channel.
-	 * ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List)
-	 */
-	@Override
-	protected void decode(ChannelHandlerContext ctx, ByteBuf in,
-			List<Object> out) throws Exception {
-        ByteBufInputStream byteBufInputStream = new ByteBufInputStream(in);
-        out.add(JacksonMapper.getInstance().readValue(byteBufInputStream, clazz));
+  /**
+   * 
+   */
+  public JacksonDecoder(Class<T> clazz) {
+    this.clazz = clazz;
+  }
 
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see io.netty.handler.codec.ByteToMessageDecoder#decode(io.netty.channel.
+   * ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List)
+   */
+  @Override
+  protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out)
+      throws Exception {
+    ByteBufInputStream byteBufInputStream = new ByteBufInputStream(in);
+    out.add(JacksonMapper.getInstance().readValue(byteBufInputStream, clazz));
+
+  }
 
 }

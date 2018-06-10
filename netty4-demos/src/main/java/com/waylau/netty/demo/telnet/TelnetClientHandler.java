@@ -10,20 +10,20 @@ import io.netty.channel.SimpleChannelInboundHandler;
 @Sharable
 public class TelnetClientHandler extends SimpleChannelInboundHandler<String> {
 
-    protected void messageReceived(ChannelHandlerContext ctx, String msg) {
-        System.err.println(msg);
-    }
+  protected void messageReceived(ChannelHandlerContext ctx, String msg) {
+    System.err.println(msg);
+  }
 
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        cause.printStackTrace();
-        ctx.close();
-    }
+  @Override
+  public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+    cause.printStackTrace();
+    ctx.close();
+  }
 
-	@Override
-	protected void channelRead0(ChannelHandlerContext ctx, String msg)
-			throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+  @Override
+  protected void channelRead0(ChannelHandlerContext ctx, String msg)
+      throws Exception {
+    // TODO Auto-generated method stub
+
+  }
 }
